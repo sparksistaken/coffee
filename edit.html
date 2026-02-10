@@ -14,8 +14,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #0A0A0F;
-            color: #fff;
+            background: #181818;
+            color: #EEEEEE;
             overflow: hidden;
             height: 100vh;
         }
@@ -24,16 +24,16 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            background: #0A0A0F;
+            background: #181818;
         }
 
         .tab-bar {
-            background: linear-gradient(to right, #0F0F14, #1A2332);
+            background: #191919;
             display: flex;
             align-items: center;
             padding: 0;
             gap: 0;
-            border-bottom: 1px solid #2A4D7C;
+            border-bottom: 1px solid #363636;
             min-height: 35px;
         }
 
@@ -42,27 +42,27 @@
             align-items: center;
             gap: 8px;
             padding: 8px 16px;
-            background: #0F0F14;
+            background: #191919;
             cursor: pointer;
             user-select: none;
             transition: all 0.1s ease;
             font-size: 13px;
             font-weight: 400;
-            color: #6B8CAE;
-            border-right: 1px solid #2A4D7C;
+            color: #B1ADAD;
+            border-right: 1px solid #363636;
             position: relative;
             height: 35px;
         }
 
         .tab:hover {
-            background: #1A2332;
-            color: #4A90E2;
+            background: #202020;
+            color: #2D7DFF;
         }
 
         .tab.active {
-            background: #0A0A0F;
-            color: #4A90E2;
-            border-top: 2px solid #4A90E2;
+            background: #181818;
+            color: #2D7DFF;
+            border-top: 2px solid #2D7DFF;
         }
 
         .tab-label {
@@ -75,9 +75,9 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #4A90E2;
+            background: #2D7DFF;
             margin-left: 4px;
-            box-shadow: 0 0 6px rgba(74, 144, 226, 0.6);
+            box-shadow: 0 0 6px rgba(45, 125, 255, 0.6);
         }
 
         .tab-close {
@@ -87,15 +87,15 @@
             width: 20px;
             height: 20px;
             border-radius: 3px;
-            color: #6B8CAE;
+            color: #B1ADAD;
             font-size: 18px;
             transition: all 0.1s;
             margin-left: 4px;
         }
 
         .tab-close:hover {
-            background: #2A4D7C;
-            color: #4A90E2;
+            background: #2A2A2A;
+            color: #EEEEEE;
         }
 
         .new-tab-btn {
@@ -106,15 +106,15 @@
             height: 35px;
             background: transparent;
             border: none;
-            color: #4A90E2;
+            color: #B1ADAD;
             cursor: pointer;
             font-size: 20px;
             transition: all 0.1s;
         }
 
         .new-tab-btn:hover {
-            background: #1A2332;
-            color: #4A90E2;
+            background: #202020;
+            color: #2D7DFF;
         }
 
         .editor-wrapper {
@@ -142,11 +142,11 @@
 
         .context-menu {
             position: fixed;
-            background: linear-gradient(to bottom, #0F0F14, #0A0A0F);
-            border: 1px solid #2A4D7C;
+            background: #191919;
+            border: 1px solid #363636;
             padding: 4px 0;
             z-index: 1000;
-            box-shadow: 0 4px 16px rgba(30, 58, 95, 0.4);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.5);
             min-width: 180px;
             border-radius: 4px;
         }
@@ -156,17 +156,17 @@
             cursor: pointer;
             font-size: 13px;
             transition: all 0.1s;
-            color: #4A90E2;
+            color: #DDDDDD;
         }
 
         .context-menu-item:hover {
-            background: #2A4D7C;
+            background: #2A2A2A;
             color: #FFFFFF;
         }
 
         .context-menu-separator {
             height: 1px;
-            background: #2A4D7C;
+            background: #363636;
             margin: 4px 0;
         }
     </style>
@@ -214,44 +214,49 @@
 
         require(['vs/editor/editor.main'], function() {
             // Define theme FIRST before anything else
-            monaco.editor.defineTheme('dark-theme', {
-                base: 'vs-dark',
-                inherit: true,
-                rules: [
-                    { token: 'comment', foreground: '6A9955', fontStyle: 'italic' },
-                    { token: 'keyword', foreground: '4A90E2', fontStyle: 'bold' },
-                    { token: 'string', foreground: '7EB8DA' },
-                    { token: 'number', foreground: '5BA3D0' },
-                    { token: 'type.identifier', foreground: '4A90E2' },
-                    { token: 'operator', foreground: '6B8CAE' },
-                    { token: 'delimiter', foreground: '6B8CAE' },
-                    { token: 'identifier', foreground: '9DCDFF' },
-                ],
-                colors: {
-                    'editor.background': '#0A0A0F',
-                    'editor.foreground': '#D4D4D4',
-                    'editor.lineHighlightBackground': '#0F0F14',
-                    'editorCursor.foreground': '#4A90E2',
-                    'editor.selectionBackground': '#2A4D7C',
-                    'editor.inactiveSelectionBackground': '#1E3A5F',
-                    'editorLineNumber.foreground': '#6B8CAE',
-                    'editorLineNumber.activeForeground': '#4A90E2',
-                    'minimap.background': '#0A0A0F',
-                    'editorBracketMatch.background': '#2A4D7C44',
-                    'editorBracketMatch.border': '#4A90E2',
-                    'editorSuggestWidget.background': '#0F0F14',
-                    'editorSuggestWidget.border': '#2A4D7C',
-                    'editorSuggestWidget.selectedBackground': '#2A4D7C',
-                    'editorSuggestWidget.highlightForeground': '#4A90E2',
-                    'editorWidget.background': '#0F0F14',
-                    'editorWidget.border': '#2A4D7C',
-                    'editorHoverWidget.background': '#0F0F14',
-                    'editorHoverWidget.border': '#2A4D7C',
-                    'scrollbarSlider.background': '#2A4D7C66',
-                    'scrollbarSlider.hoverBackground': '#2A4D7CB3',
-                    'scrollbarSlider.activeBackground': '#4A90E2AA',
-                }
-            });
+monaco.editor.defineTheme('dark-theme', {
+    base: 'vs-dark',
+    inherit: true,
+    rules: [
+        { token: 'comment', foreground: '6A9955', fontStyle: 'italic' },
+        { token: 'keyword', foreground: '2D7DFF', fontStyle: 'bold' },
+        { token: 'string', foreground: '9CDCFE' },
+        { token: 'number', foreground: 'B5CEA8' },
+        { token: 'type.identifier', foreground: '4FC1FF' },
+        { token: 'operator', foreground: 'B1ADAD' },
+        { token: 'delimiter', foreground: 'B1ADAD' },
+        { token: 'identifier', foreground: 'D4D4D4' },
+    ],
+    colors: {
+        'editor.background': '#191919',
+        'editor.foreground': '#EEEEEE',
+        'editorLineNumber.foreground': '#777777',
+        'editorLineNumber.activeForeground': '#2D7DFF',
+        'editorCursor.foreground': '#2D7DFF',
+
+        'editor.selectionBackground': '#2D7DFF33',
+        'editor.inactiveSelectionBackground': '#2D7DFF22',
+
+        'editor.lineHighlightBackground': '#202020',
+
+        'editorWidget.background': '#191919',
+        'editorWidget.border': '#363636',
+
+        'editorHoverWidget.background': '#191919',
+        'editorHoverWidget.border': '#363636',
+
+        'editorSuggestWidget.background': '#191919',
+        'editorSuggestWidget.border': '#363636',
+        'editorSuggestWidget.selectedBackground': '#2A2A2A',
+
+        'editorBracketMatch.background': '#2D7DFF33',
+        'editorBracketMatch.border': '#2D7DFF',
+
+        'scrollbarSlider.background': '#2A2A2A',
+        'scrollbarSlider.hoverBackground': '#363636',
+        'scrollbarSlider.activeBackground': '#2D7DFF88',
+    }
+});
 
             // Set as default theme immediately
             monaco.editor.setTheme('dark-theme');
